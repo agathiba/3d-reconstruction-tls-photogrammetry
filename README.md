@@ -2,6 +2,8 @@
 
 A comparative post-processing and sensor fusion study evaluating **Terrestrial Laser Scanning (TLS)** against **Close-Range Digital Photogrammetry (SfM/MVS)** for high-precision 3D digital preservation and geometric analysis.
 
+📄 **[Read the Full Technical Report (PDF - Greek)](./3D_Reconstruction_TLS_Photogrammetry_Report.pdf)**
+
 ---
 
 ## 📌 Project Overview
