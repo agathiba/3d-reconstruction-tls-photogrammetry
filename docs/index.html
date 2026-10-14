@@ -39,10 +39,10 @@
 </header>
 <main>
   <div class="tabs" role="group" aria-label="Choose model">
-    <button type="button" data-src="models/statue_hybrid.glb" data-desc="hybrid" aria-pressed="true">Hybrid (TLS + photogrammetry)</button>
-    <button type="button" data-src="models/statue_photogrammetry.glb" data-desc="photo" aria-pressed="false">Photogrammetry only</button>
+    <button type="button" data-src="models/statue_hybrid.glb?v=2" data-desc="hybrid" aria-pressed="true">Hybrid (TLS + photogrammetry)</button>
+    <button type="button" data-src="models/statue_photogrammetry.glb?v=2" data-desc="photo" aria-pressed="false">Photogrammetry only</button>
   </div>
-  <model-viewer id="viewer" src="models/statue_hybrid.glb" alt="3D model of the statue"
+  <model-viewer id="viewer" src="models/statue_hybrid.glb?v=2" alt="3D model of the statue"
     camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="1500" rotation-per-second="18deg"
     shadow-intensity="1" exposure="0.8" camera-orbit="30deg 75deg auto" interaction-prompt="auto"></model-viewer>
   <p class="hint">Drag to rotate · scroll or pinch to zoom · right-click / two fingers to pan</p>
