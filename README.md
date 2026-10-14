@@ -4,6 +4,11 @@ A comparative post-processing and sensor fusion study evaluating **Terrestrial L
 
 📄 **[Read the Full Technical Report (PDF - Greek)](./3D_Reconstruction_TLS_Photogrammetry_Report.pdf)**
 
+<p align="center">
+  <img src="images/scanner_and_statue.png" alt="FARO Focus laser scanner (left) and the statue that was reconstructed (right)">
+  <br><em>FARO Focus laser scanner (left) and the statue that was reconstructed (right)</em>
+</p>
+
 ---
 
 ## 📌 Project Overview
@@ -27,6 +32,11 @@ The objective of this project is the reconstruction, optimization, and quantitat
 * **Dense Cloud Generation:** Computed high-density depth maps with optimized bounding box limits to filter vegetation artifacts.
 * **Textured Mesh:** Built high-detail geometry and generated texture atlases using blending weights for photo consistency.
 
+<p align="center">
+  <img src="images/photogrammetry_model_views.png" alt="Textured photogrammetric model (Agisoft Metashape), multiple views">
+  <br><em>Textured photogrammetric model (Agisoft Metashape), multiple views</em>
+</p>
+
 ### 3. Sensor Fusion & Hybrid Reconstruction
 * Imported the TLS Poisson mesh into Agisoft Metashape.
 * Positioned 10 distributed Ground Control Points (GCPs) across the geometry and identified them across multiple photos.
@@ -36,6 +46,16 @@ The objective of this project is the reconstruction, optimization, and quantitat
 ### 4. Quantitative Geometric Inspection (CloudCompare)
 * Evaluated geometric discrepancy between the TLS and Photogrammetric meshes using the **Cloud-to-Mesh (C2M)** distance tool.
 * Successfully demonstrated model convergence with surface deviations predominantly constrained within **±1–2 cm**.
+
+<p align="center">
+  <img src="images/deviation_maps.png" alt="Cloud-to-mesh deviation maps in CloudCompare">
+  <br><em>Cloud-to-mesh deviation maps in CloudCompare</em>
+</p>
+
+<p align="center">
+  <img src="images/texture_comparison.png" alt="Texture quality of the three models: laser scanner (left), photogrammetry (middle), hybrid (right)">
+  <br><em>Texture quality of the three models: laser scanner (left), photogrammetry (middle), hybrid (right)</em>
+</p>
 
 ---
 
