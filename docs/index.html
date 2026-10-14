@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Statue Reconstruction</title>
+<meta name="description" content="Interactive 3D models of a statue reconstructed with close-range photogrammetry and a hybrid laser scanning + photogrammetry approach.">
+<meta property="og:title" content="3D Statue Reconstruction: Photogrammetry vs. Hybrid TLS">
+<meta property="og:description" content="Interactive 3D models reconstructed with Agisoft Metashape, a FARO Focus laser scanner and a hybrid workflow.">
+<meta property="og:image" content="https://agathiba.github.io/3d-reconstruction-tls-photogrammetry/preview.png">
+<meta property="og:url" content="https://agathiba.github.io/3d-reconstruction-tls-photogrammetry/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
+<style>
+  :root { --bg:#14161a; --panel:#1e2127; --text:#e8e6e3; --muted:#9aa0a6; --accent:#d9a25f; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { padding: 24px 16px 8px; max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: clamp(1.3rem, 3vw, 1.9rem); margin: 0 0 6px; font-weight: 650; }
+  header p { margin: 0; color: var(--muted); line-height: 1.5; }
+  main { max-width: 1100px; margin: 0 auto; padding: 8px 16px 32px; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 12px; }
+  .tabs button { background: var(--panel); color: var(--text); border: 1px solid #333842; border-radius: 999px; padding: 8px 16px; font-size: .95rem; cursor: pointer; }
+  .tabs button[aria-pressed="true"] { background: var(--accent); color: #1a1a1a; border-color: var(--accent); font-weight: 600; }
+  model-viewer { width: 100%; height: min(72vh, 680px); background: radial-gradient(circle at 50% 40%, #2a2e36, #121418 70%); border-radius: 14px; --poster-color: transparent; }
+  .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 14px; }
+  .card { background: var(--panel); border-radius: 12px; padding: 14px 16px; }
+  .card h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; font-weight: 600; }
+  .card p { margin: 0; line-height: 1.5; }
+  .hint { color: var(--muted); font-size: .9rem; margin-top: 10px; }
+  a { color: var(--accent); }
+  footer { max-width: 1100px; margin: 0 auto; padding: 0 16px 32px; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<header>
+  <h1>3D Statue Reconstruction</h1>
+  <p>Close-range photogrammetry and terrestrial laser scanning (TLS) of an outdoor statue, MSc course <em>3D Data Processing &amp; Visualization</em>.</p>
+</header>
+<main>
+  <div class="tabs" role="group" aria-label="Choose model">
+    <button type="button" data-src="models/statue_hybrid.glb" data-desc="hybrid" aria-pressed="true">Hybrid (TLS + photogrammetry)</button>
+    <button type="button" data-src="models/statue_photogrammetry.glb" data-desc="photo" aria-pressed="false">Photogrammetry only</button>
+  </div>
+  <model-viewer id="viewer" src="models/statue_hybrid.glb" alt="3D model of the statue"
+    camera-controls touch-action="pan-y" auto-rotate auto-rotate-delay="1500" rotation-per-second="18deg"
+    shadow-intensity="1" exposure="1.05" camera-orbit="30deg 75deg auto" interaction-prompt="auto"></model-viewer>
+  <p class="hint">Drag to rotate · scroll or pinch to zoom · right-click / two fingers to pan</p>
+  <div class="info">
+    <div class="card"><h2>Model</h2><p id="desc">Laser-scanner geometry (FARO Focus) combined with photogrammetric colour from Agisoft Metashape.</p></div>
+    <div class="card"><h2>Web version</h2><p id="stats">~200,000 triangles, decimated from 5.75 million for the browser.</p></div>
+    <div class="card"><h2>Tools</h2><p>FARO Focus · Agisoft Metashape Pro · MeshLab · CloudCompare</p></div>
+  </div>
+</main>
+<footer>
+  Code, report and full-resolution workflow: <a href="https://github.com/agathiba/3d-reconstruction-tls-photogrammetry">github.com/agathiba/3d-reconstruction-tls-photogrammetry</a> · Agathi Bantisouli
+</footer>
+<script>
+  const info = {
+    hybrid: ["Laser-scanner geometry (FARO Focus) combined with photogrammetric colour from Agisoft Metashape.",
+             "~200,000 triangles, decimated from 5.75 million for the browser."],
+    photo:  ["Close-range photogrammetry in Agisoft Metashape, with per-vertex colour from the photographs.",
+             "~150,000 triangles, decimated from 243,000 for the browser."]
+  };
+  const viewer = document.getElementById('viewer');
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+      viewer.src = btn.dataset.src;
+      const [d, s] = info[btn.dataset.desc];
+      document.getElementById('desc').textContent = d;
+      document.getElementById('stats').textContent = s;
+    });
+  });
+</script>
+</body>
+</html>

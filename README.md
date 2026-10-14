@@ -4,6 +4,13 @@ A comparative post-processing and sensor fusion study evaluating **Terrestrial L
 
 📄 **[Read the Full Technical Report (PDF - Greek)](./3D_Reconstruction_TLS_Photogrammetry_Report.pdf)**
 
+🌐 **Interactive 3D viewer:** [https://agathiba.github.io/3d-reconstruction-tls-photogrammetry/](https://agathiba.github.io/3d-reconstruction-tls-photogrammetry/)
+
+<p align="center">
+  <a href="https://agathiba.github.io/3d-reconstruction-tls-photogrammetry/"><img src="images/viewer_preview.png" width="700" alt="Interactive 3D viewer of the reconstructed statue"></a>
+  <br><em>Click to rotate and zoom the models in your browser</em>
+</p>
+
 <p align="center">
   <img src="images/scanner_and_statue.png" alt="FARO Focus laser scanner (left) and the statue that was reconstructed (right)">
   <br><em>FARO Focus laser scanner (left) and the statue that was reconstructed (right)</em>
@@ -62,3 +69,27 @@ The objective of this project is the reconstruction, optimization, and quantitat
 ## 💻 Software & Tools
 * **Software:** MeshLab, Agisoft Metashape Pro, CloudCompare
 * **Data Sources:** FARO Focus TLS scans, Canon EOS 550D DSLR images
+
+---
+
+## 🧊 3D Models
+
+| File | Content | Size |
+| :--- | :--- | :--- |
+| [`models/statue_photogrammetry.stl`](./models/statue_photogrammetry.stl) | Photogrammetric mesh (Agisoft Metashape), decimated to 150k triangles – opens in GitHub's 3D viewer | 7.5 MB |
+| [`models/statue_hybrid.stl`](./models/statue_hybrid.stl) | Hybrid TLS + photogrammetry mesh, decimated from 5.75M to 200k triangles | 10 MB |
+| [`models/statue_tls_pointcloud_500k.ply`](./models/statue_tls_pointcloud_500k.ply) | FARO Focus point cloud with RGB, randomly subsampled from 6.6M to 500k points – open in CloudCompare or MeshLab | 7.5 MB |
+| `docs/models/*.glb` | Coloured versions of both meshes used by the web viewer | 3–4 MB |
+
+The meshes were decimated with quadric edge collapse (Open3D) so they can be viewed online; the full-resolution models are available on request. The STL/GLB meshes are centred on the base of the statue, while the point cloud keeps the original project coordinates.
+
+## 📁 Repository Structure
+
+```
+├── docs/                      # Web viewer, published with GitHub Pages
+│   ├── index.html
+│   └── models/                # statue_hybrid.glb, statue_photogrammetry.glb
+├── models/                    # STL meshes and TLS point cloud (PLY)
+├── images/                    # Figures used in this README
+└── 3D_Reconstruction_TLS_Photogrammetry_Report.pdf
+```
