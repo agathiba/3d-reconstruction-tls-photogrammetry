@@ -74,6 +74,11 @@ The objective of this project is the reconstruction, optimization, and quantitat
 
 ## 🧊 3D Models
 
+<p align="center">
+  <img src="images/tls_point_cloud.png" width="700" alt="TLS point cloud of the statue with RGB colour, two views">
+  <br><em>Terrestrial laser scanning point cloud (FARO Focus) with RGB colour – 500k-point subset, two views</em>
+</p>
+
 | File | Content | Size |
 | :--- | :--- | :--- |
 | [`models/statue_photogrammetry.stl`](./models/statue_photogrammetry.stl) | Photogrammetric mesh (Agisoft Metashape), decimated to 150k triangles – opens in GitHub's 3D viewer | 7.5 MB |
